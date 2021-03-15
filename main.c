@@ -1,3 +1,8 @@
+/*
+    Date: 3/13/21
+    Author: Joseph Shimel
+*/
+
 #include "common.h"
 
 enum tokenState {BEGIN, TEXT, STRING};
