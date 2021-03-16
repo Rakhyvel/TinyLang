@@ -61,7 +61,7 @@ enum astType {
     // Anonymous
     AST_NOP
 };
-struct token {enum tokenType type; char data[255];};
+struct token {enum tokenType type; char* data;};
 struct astNode {enum astType type; struct list* children; char data[255];};
 
 struct astNode* parser_parseAST(struct list* tokenQueue);
