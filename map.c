@@ -6,8 +6,7 @@
     Date: 11/4/20 
 */
 
-
-#include "common.h"
+#include "include.h"
 
 /*
     Function that converts every string to an almost unique number.

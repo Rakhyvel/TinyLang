@@ -1,4 +1,4 @@
-#include "common.h"
+#include "include.h"
 
 static int interpretAST(struct astNode* node, struct map* varMap);
 

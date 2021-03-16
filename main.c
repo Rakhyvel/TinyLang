@@ -3,7 +3,7 @@
     Author: Joseph Shimel
 */
 
-#include "common.h"
+#include "include.h"
 
 enum tokenState {BEGIN, TEXT, STRING};
 static const char* tokenMap[] = {"!", "?", ":", "and", "or", "=", ">", "<", "+", "-", "*", "/",  "(", ")", "{", "}", "\n", "if", "while"};
