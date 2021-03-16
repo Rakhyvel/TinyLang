@@ -29,40 +29,24 @@ struct map* map_create();
 void map_put(struct map*, char*, int);
 int map_get(struct map*, const char*);
 
-enum tokenType {
+enum type {
 	// Literals
-	TOKEN_IDENT, TOKEN_NUM, TOKEN_STR,
+	IDENT, NUM, STR,
 	// Variables
-	TOKEN_EMARK, TOKEN_QMARK, TOKEN_ASSIGN, 
+	EMARK, QMARK, ASSIGN, 
 	// Branch operators
-	TOKEN_AND, TOKEN_OR, 
+	AND, OR, 
 	// Boolean operators
-	TOKEN_IS, TOKEN_GTR, TOKEN_LSR,
+	IS, GTR, LSR,
 	// Math operators
-	TOKEN_PLUS, TOKEN_MINUS, TOKEN_STAR, TOKEN_SLASH,
+	PLUS, MINUS, STAR, SLASH,
 	// Punctuation
-    TOKEN_LPAREN, TOKEN_RPAREN, TOKEN_LBRACE, TOKEN_RBRACE, TOKEN_SEMIC,
+    LPAREN, RPAREN, LBRACE, RBRACE, SEMIC,
 	// Control flow structures
-	TOKEN_IF, TOKEN_WHILE,
+	IF, WHILE,
 };
-enum astType {
-	// Literals
-    AST_IDENT, AST_NUM, AST_STR,
-    // Variable operations
-    AST_OUT, AST_IN, AST_ASSIGN, 
-    // Boolean operators
-    AST_AND, AST_OR,
-    // Branch operators
-    AST_IS, AST_GTR, AST_LSR,
-    // Math operators
-	AST_ADD, AST_SUB, AST_MULT, AST_DIV, 
-    // StatementNode types
-	AST_BLOCK, AST_IF, AST_WHILE,
-    // Anonymous
-    AST_NOP
-};
-struct token {enum tokenType type; char* data;};
-struct astNode {enum astType type; struct list* children; char data[255];};
+struct token {enum type type; char* data;};
+struct astNode {enum type type; struct list* children; char data[255];};
 
 struct astNode* parser_parseAST(struct list* tokenQueue);
 

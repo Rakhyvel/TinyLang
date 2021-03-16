@@ -1,5 +1,4 @@
 x?
-x : 5
-x?
-"This is a comment, lol"!
-x!
+if x > 10 {
+    "Too high!"!
+}

@@ -16,9 +16,8 @@
 
 /*  Creates a new list, with no new nodes. */
 struct list* list_create() {
-    struct list* list = (struct list*)malloc(sizeof(struct list));
+    struct list* list = (struct list*)calloc(1, sizeof(struct list));
 
-    list->head.prev = list->tail.next = NULL;
     list->head.next = &list->tail;
     list->tail.prev = &list->head;
     
