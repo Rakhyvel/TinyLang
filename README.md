@@ -16,7 +16,7 @@ x?
 ```
 The program will wait for user input to be given, and will assign the integer value to the given varaible.
 ### Expressions
-TinyLang can parse and evaluate expressions, with a list of some operators. They are listed below, in reverse order of operations.
+TinyLang can parse and evaluate expressions, with a list of some operators. They are listed below, in reverse order of operation.
 | Token          | Description                                                                                    |
 |----------------|------------------------------------------------------------------------------------------------|
 | <*identifier*> | Any text in the program that is not a keyword, or surrounded by quotes. Represents a variable. |
