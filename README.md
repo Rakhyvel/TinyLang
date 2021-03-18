@@ -94,9 +94,7 @@ while 1 {
 The following TinyLang program asks the user for a number between 2 and 11, and prints the fibonacci number at that index.
 ```
 "This is a simple factorial program, written in TinyLang. It demonstrates 
-that TinyLang can take input, produce output, and have infiitely complex 
-control flow. Also, that it has comments, which are just string literals that
-are not printed out."
+that TinyLang can take input, produce output, and make decisions."
 
 a: 1
 b: 1
