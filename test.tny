@@ -1,43 +1,17 @@
-"Windows 10 debugger"
-powers_on?
-if powers_on {
-    windows_err?
-    if windows_err {
-        ""!
-        "Get into windows recovery"!
-        "Enter the commands:"!
-        "sfc /scannow"!
-        "chkdsk c: /r"!
-        "and restart the computer."!
-        worked?
-        if worked {
-            "Congrats!"!
-            halt
-        }
-        mbr?
-        if mbr {
-            "Enter the commands:"!
-            "bootrec blah blah"!
-            worked?
-            if worked {
-                "Congrats!"!
-                halts
-            }
-        }
-        "Uninstall and reinstall windows 10"!
-        halt
-    }
-    oem_logo?
-    if oem_logo {
-        "Live boot into Active@ or Linux"!
-        readHDD?
-    }
-}
+"This is a simple factorial program, written in TinyLang. It demonstrates 
+that TinyLang can take input, produce output, and have infiitely complex 
+control flow. Also, that it has comments, which are just string literals that
+are not printed out."
 
-"Diagnose battery"!
-worked?
-if worked {
-    "Congrats!"!
-    halt
+a: 1
+b: 1
+sum: 0
+i: 2
+n?
+while i < n or i = n {
+    sum: a+b
+    a: b
+    b: sum
+    i: i + 1
+    sum!
 }
-"Its probably just dead. See if you can backup data"!

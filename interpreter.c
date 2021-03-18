@@ -62,7 +62,7 @@ static int interpretAST(struct token* node, struct map* varMap) {
     case LBRACE: {
         return interpreter_interpret(node->children, varMap);
     } case ASSIGN: { 
-        map_put(varMap, node->data, interpretAST(list_get(node->children, 0), varMap));
+        map_put(varMap, (char*)((struct token*)list_get(node->children, 1))->data, interpretAST(list_get(node->children, 0), varMap));
         return map_get(varMap, node->data);
     } case IF: { 
         if(interpretAST(list_get(node->children, 0), varMap)) {
