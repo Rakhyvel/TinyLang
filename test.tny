@@ -11,8 +11,11 @@ chosen: 0
 
 while chosen = 0 {
     n?
-    if n > 11 or n < 2 {
+    if n > 11 {
         "Please choose a smaller number."!
+    }
+    if n < 2 {
+        "Please choose a larger number."!
     }
     if (n = 11 or n < 11) and (n > 1){
         chosen: 1
