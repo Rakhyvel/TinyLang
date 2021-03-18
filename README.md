@@ -94,4 +94,5 @@ while i < n or i = n {
     sum!
 }
 "Done."!
+halt
 ```
