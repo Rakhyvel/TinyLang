@@ -59,6 +59,36 @@ There are a few control flow structures defined in TinyLang. They are as follows
 | while *expression* *code* | While the expression evaluates to true, the code is executed. |
 | halt                      | Stops the program.                                            |
 
+Some examples:
+```
+age?
+if age > 18 or age = 18 {
+    "You can vote!"!
+}
+if age < 18 {
+    "You cannot vote."!
+}
+```
+
+```
+count: 5
+while count > 0 or count = 0 {
+    count: count - 1
+}
+"Liftoff!"!
+```
+
+```
+while 1 {
+    "Enter 4 to end the program"!
+    input?
+    if input = 4 {
+        halt
+    }
+    "Let's try again"!
+}
+```
+
 ## Sample program
 The following TinyLang program asks the user for a number between 2 and 11, and prints the fibonacci number at that index.
 ```
