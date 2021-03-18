@@ -1,6 +1,35 @@
-count: 5
-while count > 0 or count = 0 {
-    count!
-    count: count - 1
+"This is a simple factorial program, written in TinyLang. It demonstrates 
+that TinyLang can take input, produce output, and have infiitely complex 
+control flow. Also, that it has comments, which are just string literals that
+are not printed out."
+
+a: 1
+b: 1
+sum: 0
+i: 2
+chosen: 0
+
+"Ask for user input"
+while chosen = 0 {
+    n?
+    if n > 11 {
+        "Please choose a smaller number."!
+    }
+    if n < 2 {
+        "Please choose a larger number."!
+    }
+    if (n = 11 or n < 11) and (n > 1){
+        chosen: 1
+    }
 }
-"Liftoff!"!
+
+"Print out first n fib numbers"
+while i < n or i = n {
+    sum: a+b
+    a: b
+    b: sum
+    i: i + 1
+    sum!
+}
+"Done."!
+halt
