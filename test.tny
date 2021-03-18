@@ -7,7 +7,18 @@ a: 1
 b: 1
 sum: 0
 i: 2
-n?
+chosen: 0
+
+while chosen = 0 {
+    n?
+    if n > 11 or n < 2 {
+        "Please choose a smaller number."!
+    }
+    if (n = 11 or n < 11) and (n > 1){
+        chosen: 1
+    }
+}
+
 while i < n or i = n {
     sum: a+b
     a: b
@@ -15,3 +26,4 @@ while i < n or i = n {
     i: i + 1
     sum!
 }
+"Done."!
