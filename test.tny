@@ -1,4 +1,43 @@
-x?
-if x > 10 {
-    "Too high!"!
+"Windows 10 debugger"
+powers_on?
+if powers_on {
+    windows_err?
+    if windows_err {
+        ""!
+        "Get into windows recovery"!
+        "Enter the commands:"!
+        "sfc /scannow"!
+        "chkdsk c: /r"!
+        "and restart the computer."!
+        worked?
+        if worked {
+            "Congrats!"!
+            halt
+        }
+        mbr?
+        if mbr {
+            "Enter the commands:"!
+            "bootrec blah blah"!
+            worked?
+            if worked {
+                "Congrats!"!
+                halts
+            }
+        }
+        "Uninstall and reinstall windows 10"!
+        halt
+    }
+    oem_logo?
+    if oem_logo {
+        "Live boot into Active@ or Linux"!
+        readHDD?
+    }
 }
+
+"Diagnose battery"!
+worked?
+if worked {
+    "Congrats!"!
+    halt
+}
+"Its probably just dead. See if you can backup data"!

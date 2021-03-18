@@ -43,12 +43,12 @@ enum type {
 	// Punctuation
     LPAREN, RPAREN, LBRACE, RBRACE, SEMIC,
 	// Control flow structures
-	IF, WHILE,
+	IF, WHILE, HALT
 };
-struct token {enum type type; char* data;};
-struct astNode {enum type type; struct list* children; char data[255];};
+struct token {enum type type; struct list* children; char data[255];};
+enum tokenState {BEGIN, TEXT, STRING};
 
-struct astNode* parser_parseAST(struct list* tokenQueue);
+struct token* parser_parseAST(struct list* tokenQueue);
 
 void interpreter_interpret(struct list*, struct map*);
 

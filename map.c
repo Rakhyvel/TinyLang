@@ -38,7 +38,7 @@ void map_put(struct map* map, char* key, int value) {
             bucket->value = value;
             return;
         }
-    struct mapNode* node = (struct mapNode*) malloc(sizeof(struct mapNode*));
+    struct mapNode* node = (struct mapNode*) malloc(sizeof(struct mapNode));
     node->key = key;
     node->value = value;
     node->next = map->lists[hashcode];
