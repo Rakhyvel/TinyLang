@@ -1,7 +1,7 @@
 # TinyLang
 TinyLang is a small, barebones, interpreted programming language developed to demonstrate the basics of writing a compiler or interpreter.
 ## Tutorial
-The tutorial to write your own TinyLang interpeter can be found [here](josephs-projects/blog/tinylang1.html)
+The tutorial to write your own TinyLang interpeter can be found [here](http://josephs-projects.com/blog/tinylang1.html)
 ## Specification
 ### Variables
 Variables can be assigned using the ":" operator. For example:
