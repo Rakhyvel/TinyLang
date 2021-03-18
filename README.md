@@ -73,6 +73,7 @@ sum: 0
 i: 2
 chosen: 0
 
+"Ask for user input"
 while chosen = 0 {
     n?
     if n > 11 {
@@ -86,6 +87,7 @@ while chosen = 0 {
     }
 }
 
+"Print out first n fib numbers"
 while i < n or i = n {
     sum: a+b
     a: b
