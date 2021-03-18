@@ -71,9 +71,10 @@ if age < 18 {
 ```
 
 ```
-count: 6
+count: 5
 while count > 0 or count = 0 {
-    count: count - 1!
+    count!
+    count: count - 1
 }
 "Liftoff!"!
 ```
