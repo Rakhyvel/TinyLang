@@ -1,5 +1,5 @@
 # TinyLang
-TinyLang is a small, barebones, interpreted programming language developed to demonstrate the basics of writing a compiler or interpreter. So far, it is only 330 significant lines of code long. There are no functions, arrays, objects or libraries, but it still has enough functionality to write any program possible.
+TinyLang is a small, barebones, interpreted programming language developed to demonstrate the basics of writing a compiler or interpreter. So far, it is only 330 significant lines of code long. TinyLang has no functions, arrays, objects or libraries, but it still has enough functionality to write any program possible.
 ## Tutorial
 The tutorial to write your own TinyLang interpeter can be found [here](http://josephs-projects.com/blog/tinylang1.html)
 ## Specification
