@@ -58,3 +58,37 @@ There are a few control flow structures defined in TinyLang. They are as follows
 | if *expression* *code*    | If the expression evaluates to true, the code is executed.    |
 | while *expression* *code* | While the expression evaluates to true, the code is executed. |
 | halt                      | Stops the program.                                            |
+
+## Sample program
+The following TinyLang program asks the user for a number between 2 and 11, and prints the fibonacci number at that index.
+```
+"This is a simple factorial program, written in TinyLang. It demonstrates 
+that TinyLang can take input, produce output, and have infiitely complex 
+control flow. Also, that it has comments, which are just string literals that
+are not printed out."
+
+a: 1
+b: 1
+sum: 0
+i: 2
+chosen: 0
+
+while chosen = 0 {
+    n?
+    if n > 11 or n < 2 {
+        "Please choose a smaller number."!
+    }
+    if (n = 11 or n < 11) and (n > 1){
+        chosen: 1
+    }
+}
+
+while i < n or i = n {
+    sum: a+b
+    a: b
+    b: sum
+    i: i + 1
+    sum!
+}
+"Done."!
+```
