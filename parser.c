@@ -10,36 +10,26 @@
 
 /*
     Takes in a queue of tokens, returns the first AST node that can be found */
-struct token* parser_parseAST(struct list* tokenQueue) {
-    struct token* node = ((struct token*) list_peek(tokenQueue));
-    if(node->type == LBRACE) {
-        list_pop(tokenQueue);
-        while(!(list_isEmpty(tokenQueue) || ((struct token*) list_peek(tokenQueue))->type == RBRACE)) {
-            queue_push(node->children, parser_parseAST(tokenQueue));
-        }
-        free(list_pop(tokenQueue));
-    } else if (node->type == IF || node->type == WHILE) {
-        list_pop(tokenQueue);
-        queue_push(node->children, parser_parseAST(tokenQueue));
-        queue_push(node->children, parser_parseAST(tokenQueue));
-    } else if (node->type == HALT || node->type == SEMIC) {
-        list_pop(tokenQueue);
-    } else {
+struct token* parser_parseAST(FILE* fileptr) {
+    struct token* node = ((struct token*) nextToken(fileptr));
+     if (node->type == IF || node->type == WHILE) {
+        queue_push(node->children, parser_parseAST(fileptr));
+        for(struct token* child; (child = parser_parseAST(fileptr))->type != END; queue_push(node->children, child)); // push all children to if/while child list
+    } else if (node->type != HALT && node->type != SEMIC && node->type != END) {
     // EXPRESSION
         // INFIX TO POSTFIX THE NEXT EXPRESSION
         struct list* expression = list_create();
         struct list* opStack = list_create();
+        struct token* token = node;
         // Go through each token in expression token queue, rearrange to form postfix expression token queue
-        for(struct token* token = ((struct token*) list_peek(tokenQueue)); 
-            !list_isEmpty(tokenQueue) && token->type != SEMIC && token->type != LBRACE && token->type != RBRACE; 
-            token = ((struct token*) list_peek(tokenQueue))) {
+        for(;strlen(token->data) > 0 && token->type != SEMIC && token->type != END; 
+            token = ((struct token*) nextToken(fileptr))) {
             // VALUE
             if(token->type == IDENT || token->type == NUM || token->type == STR) {
-                queue_push(expression, list_pop(tokenQueue));
+                queue_push(expression, token);
             } else if (token->type == LPAREN) { // OPEN PARENTHESIS
-                stack_push(opStack, list_pop(tokenQueue));
+                stack_push(opStack, token);
             } else if (token->type == RPAREN) { // CLOSE PARENTHESIS
-                list_pop(tokenQueue);
                 // Pop all operations from opstack to astNode until original ( paren is found
                 while(!list_isEmpty(opStack) && ((struct token*)list_peek(opStack))->type != LPAREN) {
                     queue_push(expression, list_pop(opStack));
@@ -50,7 +40,7 @@ struct token* parser_parseAST(struct list* tokenQueue) {
                 while(!list_isEmpty(opStack) && token->type <= ((struct token*)list_peek(opStack))->type && ((struct token*)list_peek(opStack))->type != LPAREN) {
                     queue_push(expression, list_pop(opStack));
                 }
-                stack_push(opStack, list_pop(tokenQueue));
+                stack_push(opStack, token);
             }
         }
         // Push all remaining operators to queue
@@ -62,8 +52,7 @@ struct token* parser_parseAST(struct list* tokenQueue) {
         // EXPRESSION TREE GENERATION
         struct list* argStack = list_create();
         while (!list_isEmpty(expression)) {
-            struct token* token = (struct token*)list_pop(expression);
-
+            token = (struct token*)list_pop(expression);
             switch(token->type) {
             default: // Assume operator
                 queue_push(token->children, list_pop(argStack)); // Right child

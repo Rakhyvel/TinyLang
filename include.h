@@ -47,25 +47,25 @@ enum type {
 	// Variables
 	EMARK, QMARK, ASSIGN, 
 	// Branch operators
-	AND, OR, 
+	AND, OR,
 	// Boolean operators
 	IS, GTR, LSR,
 	// Math operators
 	PLUS, MINUS, STAR, SLASH,
 	// Punctuation
-    LPAREN, RPAREN, LBRACE, RBRACE, SEMIC,
+    LPAREN, RPAREN, SEMIC,
 	// Control flow structures
-	IF, WHILE, HALT
+	IF, WHILE, END, HALT, 
 };
 struct token {enum type type; struct list* children; char data[255];};
 
 // lexer.c declarations
-struct list* tokenize(char* file);
+struct token* nextToken(FILE* fileptr);
 
 // parser.c declarations
-struct token* parser_parseAST(struct list* tokenQueue);
+struct token* parser_parseAST(FILE* fileptr);
 
 // interpreter.c declarations
-int interpreter_interpret(struct list*, struct map*);
+int interpretAST(struct token* node, struct map* varMap, bool deref);
 
 #endif

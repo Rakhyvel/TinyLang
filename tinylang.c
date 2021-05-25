@@ -16,9 +16,7 @@
 
 
 /*
-    The main function opens the specified file, turns the text into a list of 
-    tokens, creates the list of AST's, and then finally interprets that list
-    into as a program */
+    Open specified file. Read in the next token, and execute it, free token, repeat */
 int main(int argc, char **argv) {
     // Check command line arguments
     if(argc < 2) {
@@ -28,28 +26,15 @@ int main(int argc, char **argv) {
 
     /* Open file*/
     FILE* fileptr = fopen(argv[1], "r");
-    if(fileptr == NULL) {
-        perror(argv[1]); // will print out an error message for us
+    if(fileptr == NULL) { // IO error with file
+        perror(argv[1]);
         exit(2);
     }
-    // Read in contents to a large string
-    char* file = malloc(sizeof(char));
-    int buffer;
-    for (int size = 1; (buffer = fgetc(fileptr)) != EOF; size++) {
-        file = realloc(file, size + 1);
-        file[size - 1] = (char)buffer;  // Convert int buffer to char, append
-        file[size] = '\0'; // Add the sentinel value
+
+    struct map* varMap = map_create();
+    while(1) {
+        interpretAST(parser_parseAST(fileptr), varMap, true);
     }
+
     fclose(fileptr);
-
-    struct list* tokenQueue = tokenize(file);    
-
-    // Parse token queue into a list of AST's
-    struct list* program = list_create();
-    while(!list_isEmpty(tokenQueue)) {
-        queue_push(program, parser_parseAST(tokenQueue));
-    }
-
-    // interpret program
-    interpreter_interpret(program, map_create());
 }

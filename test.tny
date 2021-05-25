@@ -1,33 +1,11 @@
-"This is a simple factorial program, written in TinyLang. It demonstrates 
-that TinyLang can take input, produce output, and make decisions."
+"number = 7"!
+number: 7
+i: number - 194
 
-a: 1
-b: 1
-sum: 0
-i: 2
-chosen: 0
-
-"Ask for user input"
-while chosen = 0 {
-    n?
-    if n > 11 {
-        "Please choose a smaller number."!
-    }
-    if n < 2 {
-        "Please choose a larger number."!
-    }
-    if (n = 11 or n < 11) and (n > 1){
-        chosen: 1
-    }
-}
-
-"Print out first n fib numbers"
-while i < n or i = n {
-    sum: a+b
-    a: b
-    b: sum
-    i: i + 1
-    sum!
-}
-"Done."!
-halt
+while i < number
+    i: i+1
+    "Should halt now"!
+    if 1
+        halt
+    end
+end

@@ -54,3 +54,10 @@ int map_get(struct map* map, const char* key) {
             return bucket->value;
     return 0;
 }
+
+bool map_contains(struct map* map, const char* key) {
+    for (struct mapNode* bucket = map->lists[hash(key, map)]; bucket != NULL; bucket = bucket->next)
+        if (!strcmp(bucket->key, key))
+            return true;
+    return false;
+}
